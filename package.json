@@ -1,0 +1,27 @@
+{
+	"name": "MMM-HomeAssistant-Rotary",
+	"version": "1.0.0",
+	"description": "HomeAssistant module controlled with rotary encoder, also have cool ui",
+	"main": "MMM-HomeAssistant-Rotary.js",
+	"scripts": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cnbilgin/MMM-HomeAssistant-Rotary.git"
+	},
+	"keywords": [
+		"MagicMirror",
+		"MMM",
+		"HomeAssistant",
+		"Rotary",
+		"Rotary Encoder"
+	],
+	"author": "cnbilgin",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/cnbilgin/MMM-HomeAssistant-Rotary/issues"
+	},
+	"homepage": "https://github.com/cnbilgin/MMM-HomeAssistant-Rotary#readme",
+	"dependencies": {
+		"@iiot2k/gpiox": "^2.1.4"
+	}
+}

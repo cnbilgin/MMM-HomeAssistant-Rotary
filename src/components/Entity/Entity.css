@@ -1,0 +1,42 @@
+.ha-entity {
+    position: relative;
+}
+
+.ha-entity > button {
+    aspect-ratio: 2 / 1;
+    display: flex;
+    width: 100%;
+    border-radius: 25px;
+    background-color: var(--entity-background);
+    color: var(--entity-text);
+    align-items: center; 
+    gap: 5px;  
+    padding: 5px 13px 5px 10px;
+    transition: all ease-in-out 200ms;
+}
+
+.ha-entity.ha-focused > button {
+    color: var(--entity-focused-text);
+    background-color: var(--entity-focused-background);
+}
+
+.ha-entity.ha-active > button {
+    color: var(--entity-active-text);
+    background-color: var(--entity-active-background);
+}
+
+.ha-entity.ha-focused.ha-active > button {
+    color: #fff;
+    background-color: #c6a726;
+}
+
+.ha-entity > button > .ha-entity-icon {
+    width: 20%;
+    text-align: center;
+}
+
+.ha-entity > button > .ha-entity-info {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;;
+}
