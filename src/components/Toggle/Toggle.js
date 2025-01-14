@@ -1,7 +1,8 @@
 class Toggle extends UIEntity {
   createElement() {
     const entity = super.createElement();
-    entity.classList.add("ha-toggle");
+    this._addEntityClasses(entity);
+
     const button = document.createElement("button");
 
     const icon = document.createElement("i");
@@ -31,7 +32,7 @@ class Toggle extends UIEntity {
     super.render();
 
     const entity = this.dom;
-    entity.classList.add("ha-toggle");
+    this._addEntityClasses(entity);
   }
 
   focus() {
@@ -44,5 +45,10 @@ class Toggle extends UIEntity {
 
   press() {
     super.press();
+  }
+
+  _addEntityClasses(entity) {
+    entity.classList.add("ha-toggle");
+    if (this.config.color) entity.classList.add(this.config.color);
   }
 }

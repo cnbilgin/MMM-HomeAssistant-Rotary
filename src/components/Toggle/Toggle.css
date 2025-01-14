@@ -21,3 +21,8 @@
     font-weight: 700;
     text-align: left;;
 }
+
+.ha-entity.ha-toggle.sunlight {
+    --entity-active-text: #504d3d;
+    --entity-active-background: #c8b248;
+}
