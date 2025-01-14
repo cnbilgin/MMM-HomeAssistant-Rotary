@@ -1,15 +1,8 @@
 @import 'src/components/Section/Section.css';
-@import 'src/components/Entity/Entity.css';
+@import 'src/components/UIEntity/UIEntity.css';
+@import 'src/components/Toggle/Toggle.css';
 
 :root {
-    --entity-text: var(--color-text);
-    --entity-background: #2e3136;
-    
-    --entity-focused-text: var(--color-text-bright);
-    --entity-focused-background: #454c57;
-
-    --entity-active-text: #f2e27d;
-    --entity-active-background: #837418;
 }
 
 *, *::before, *::after {

@@ -42,7 +42,7 @@ class Section {
   loadEntities() {
     this.entities = [];
     for (const entity of this.config.entities) {
-      this.entities.push(new Entity(entity, "fa-lightbulb", this.controller));
+      this.entities.push(new Toggle(entity, this.controller));
     }
   }
 }
