@@ -1,9 +1,7 @@
 class UIEntity extends ControllerEntity {
   dom;
   constructor(config, controller) {
-    super(controller);
-
-    this.id = `ha_entity_${config.id}`;
+    super(config.id, controller);
     this.config = config;
   }
 
@@ -37,6 +35,12 @@ class UIEntity extends ControllerEntity {
 
   press() {
     super.press();
+    this.render();
+  }
+
+  setActive(active) {
+    super.setActive(active);
+
     this.render();
   }
 }

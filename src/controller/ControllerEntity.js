@@ -1,8 +1,10 @@
 class ControllerEntity {
   focused = false;
   active = false;
+  id;
 
-  constructor(controller) {
+  constructor(id, controller) {
+    this.id = id;
     this.controller = controller;
 
     this.controller.register(this);
@@ -18,5 +20,9 @@ class ControllerEntity {
 
   press() {
     this.active = !this.active;
+  }
+
+  setActive(active) {
+    this.active = active;
   }
 }

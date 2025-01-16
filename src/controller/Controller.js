@@ -33,4 +33,15 @@ class Controller {
   register(entity) {
     this.entityList.push(entity);
   }
+
+  socketNotificationReceived(notification, payload) {
+    if (notification !== "ENTITIES_UPDATE") return;
+
+    Object.values(payload).forEach((entityData) => {
+      const entity = this.entityList.find((p) => p.id === entityData.id);
+      if (entity) {
+        entity.setActive(entityData.state === "on");
+      }
+    });
+  }
 }

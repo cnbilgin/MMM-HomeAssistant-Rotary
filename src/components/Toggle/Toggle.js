@@ -35,18 +35,6 @@ class Toggle extends UIEntity {
     this._addEntityClasses(entity);
   }
 
-  focus() {
-    super.focus();
-  }
-
-  blur() {
-    super.blur();
-  }
-
-  press() {
-    super.press();
-  }
-
   _addEntityClasses(entity) {
     entity.classList.add("ha-toggle");
     if (this.config.color) entity.classList.add(this.config.color);

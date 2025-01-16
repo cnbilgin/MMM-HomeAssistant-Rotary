@@ -22,6 +22,7 @@
 	},
 	"homepage": "https://github.com/cnbilgin/MMM-HomeAssistant-Rotary#readme",
 	"dependencies": {
-		"@iiot2k/gpiox": "^2.1.4"
+		"@iiot2k/gpiox": "^2.1.4",
+		"home-assistant-js-websocket": "^9.4.0"
 	}
 }

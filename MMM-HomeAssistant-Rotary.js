@@ -28,6 +28,19 @@ Module.register("MMM-HomeAssistant-Rotary", {
 
     this.initInteractions();
     this.interactions.rotary.initSocketNotification(this);
+
+  
+    const entityIds = this.getEntityIdsFromConfig();
+
+    this.sendSocketNotification("INIT", {
+      identifier: this.identifier,
+      haConfig: {
+        host: this.config.host,
+        port: this.config.port,
+        token: this.config.token
+      },
+      entityIds
+    });
   },
 
   getDom() {
@@ -50,6 +63,7 @@ Module.register("MMM-HomeAssistant-Rotary", {
    */
   socketNotificationReceived(notification, payload) {
     this.interactions.rotary.socketNotificationReceived(notification, payload);
+    this.controller.socketNotificationReceived(notification, payload);
   },
 
   initInteractions() {
@@ -65,5 +79,13 @@ Module.register("MMM-HomeAssistant-Rotary", {
       const section = new Section(i, sec, controller);
       this.sections.push(section);
     }
+  },
+
+  getEntityIdsFromConfig() {
+    return this.config.sections.reduce(
+      (prev, curr) => [...prev, ...curr.entities.map((e) => e.id)],
+      []
+    );
+
   }
 });
