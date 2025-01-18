@@ -28,7 +28,6 @@ class UIEntity extends ControllerEntity {
   }
 
   blur() {
-    console.log(this.dom, "blur");
     super.blur();
     this.render();
   }
@@ -40,7 +39,6 @@ class UIEntity extends ControllerEntity {
 
   setActive(active) {
     super.setActive(active);
-
     this.render();
   }
 }

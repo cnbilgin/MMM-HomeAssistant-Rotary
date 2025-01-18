@@ -1,11 +1,13 @@
 const NodeHelper = require("node_helper");
+
 const {
   RotaryInteractionNodeHelper
 } = require("./src/interactions/RotaryInteraction/RotaryInteractionNodeHelper.js");
 const {
   createLongLivedTokenAuth,
   createConnection,
-  subscribeEntities
+  subscribeEntities,
+  callService
 } = require("home-assistant-js-websocket");
 
 module.exports = NodeHelper.create({
@@ -25,7 +27,16 @@ module.exports = NodeHelper.create({
       case "INIT":
         this._init(payload);
         break;
+      case "UPDATE_ENTITY":
+        this.setEntity(payload);
+        break;
     }
+  },
+
+  async setEntity({ identifier, entityId }) {
+    callService(this.clients[identifier].connection, "switch", "toggle", {
+      entity_id: entityId
+    });
   },
 
   _init({ identifier, haConfig, entityIds }) {
@@ -35,6 +46,8 @@ module.exports = NodeHelper.create({
     this.clients[identifier] = clientStates;
 
     this.connectWs(identifier, haConfig, entityIds);
+
+    console.log(`Module(${identifier}) initialized`);
   },
 
   async connectWs(identifier, { host, port, token }, entityIds) {

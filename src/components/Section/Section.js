@@ -29,20 +29,19 @@ class Section {
     return section;
   }
 
-  // render() {
-  //   const section = document.getElementById(this.id);
-  //   const container = section.querySelector(".ha-section-container");
-
-  //   container.innerHTML = "";
-  //   for (const entity of this.entities) {
-  //     container.append(entity.getContainer());
-  //   }
-  // }
-
   loadEntities() {
     this.entities = [];
     for (const entity of this.config.entities) {
-      this.entities.push(new Toggle(entity, this.controller));
+      const EntityClass = this.entityFactory(entity);
+      this.entities.push(new EntityClass(entity, this.controller));
+    }
+  }
+
+  entityFactory(config) {
+    const type = config.id.split(".")[0];
+    switch (type) {
+      case "switch":
+        return Toggle;
     }
   }
 }

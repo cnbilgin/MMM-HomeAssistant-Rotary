@@ -1,6 +1,9 @@
 class Controller {
   entityList = [];
   activeEntity = null;
+  constructor(updateFn) {
+    this.updateFn = updateFn;
+  }
 
   next() {
     if (this.activeEntity) this.activeEntity.blur();
@@ -31,6 +34,10 @@ class Controller {
   }
 
   register(entity) {
+    entity.onPress(() => {
+      this.updateFn(entity.id);
+    });
+
     this.entityList.push(entity);
   }
 

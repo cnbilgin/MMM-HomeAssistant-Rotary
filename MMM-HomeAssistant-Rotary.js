@@ -23,14 +23,16 @@ Module.register("MMM-HomeAssistant-Rotary", {
   },
 
   start() {
-    this.controller = new Controller();
+    this.controller = new Controller((id) => {
+      this.sendSocketNotification("UPDATE_ENTITY", {
+        identifier: this.identifier,
+        entityId: id
+      });
+    });
+
     this.loadSections(this.controller);
 
     this.initInteractions();
-    this.interactions.rotary.initSocketNotification(this);
-
-  
-    const entityIds = this.getEntityIdsFromConfig();
 
     this.sendSocketNotification("INIT", {
       identifier: this.identifier,
@@ -39,7 +41,7 @@ Module.register("MMM-HomeAssistant-Rotary", {
         port: this.config.port,
         token: this.config.token
       },
-      entityIds
+      entityIds: this.getEntityIdsFromConfig()
     });
   },
 
@@ -71,6 +73,8 @@ Module.register("MMM-HomeAssistant-Rotary", {
       keyboard: new KeyboardInteraction(this.controller),
       rotary: new RotaryInteraction(this.controller)
     };
+
+    this.interactions.rotary.initSocketNotification(this);
   },
 
   loadSections(controller) {
